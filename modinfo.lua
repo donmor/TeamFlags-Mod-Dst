@@ -1,7 +1,7 @@
 name = "Team Flags"
 version = "2.0.0.1"
 description = [[
-队旗(Team Flags) 1.0
+队旗(Team Flags) 2.0
 
 ※MOD制作初心者
 ※大量API修改, 兼容性注意

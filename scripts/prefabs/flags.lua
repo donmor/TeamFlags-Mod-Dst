@@ -67,10 +67,7 @@ local function onequip(inst, owner)
 	if owner.components.teamworker then
 		owner.components.teamworker:SetIdentifier("teamflags", inst.color)
 	end
-	-- if owner:HasTag("player") then
-		-- owner.teamcolor = inst.components.teamflags:GetColor()
-		-- owner:AddTag("team_"..inst.color)
-	-- end
+
 	if TUNING.TEAMFLAGS_BEHAVIOR_ON_DEATH == "keep" or TUNING.TEAMFLAGS_BEHAVIOR_ON_DEATH == "disappear" then
 		inst.components.inventoryitem.keepondeath = true
 	end
@@ -117,10 +114,6 @@ local function onunequip(inst, owner)
 		owner.components.teamworker:SetIdentifier("teamflags")
 	end
 
-	-- if owner:HasTag("player") then
-		-- owner.teamcolor = nil
-		-- owner:RemoveTag("team_"..inst.color)
-	-- end
 	inst.components.inventoryitem.keepondeath = false
 end
 
@@ -174,11 +167,9 @@ local function commonfn(clr, tag)
 
 	local function onentitydeath(vinst, data)
 		local owner = inst.components.inventoryitem:GetGrandOwner()
-		if owner and owner == data.inst then--and inst.components.equippable:IsEquipped() 
-			-- if owner:HasTag("player") then
+		if owner and owner == data.inst then
 			if owner.components.teamworker then
 				owner.components.teamworker:SetIdentifier("teamflags")
-				-- owner.teamcolor = nil
 			end
 			inst:Remove()
 		end
